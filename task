@@ -1,0 +1,12 @@
+
+Create an API with UI to Signup and Login functionality.
+After login user will be able to upload the documents.
+- Profile Photo
+- Aadhar Card
+- Pan Card
+- Voter ID Proof
+- Marksheet.
+After uploading save all the documents in database in base64 or blob format. 
+Prepare a functionality to download all the documents in zip format based on current user. 
+After extract zip the documents should be available as same they are uploaded. 
+The documents should be in png, pdf, jpg, jpeg, ppt, pptx, doc, docx.

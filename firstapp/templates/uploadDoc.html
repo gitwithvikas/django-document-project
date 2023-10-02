@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserProfile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 class="alert alert-danger text-center">User Login</h2>
+    </div>
+
+
+    <div class="d-flex justify-content-center ">
+        <form action="/uploadDoc/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div>
+                <label for="profile_photo"><b>Upload Profile Photo</b></label>
+                <input type="file" class="form-control" name="profile_photo" placeholder="Upload Profile Photo">
+            </div>
+            <br>
+            <div>
+                <label for="aadhar_card"><b>Upload Adhar Card</b></label>
+
+                <input type="file" class="form-control" name="aadhar_card" placeholder="Upload Adhar Card">
+            </div>
+            <br>
+            <div>
+                <label for="pan_card"><b>Upload Pan Card</b></label>
+
+                <input type="file" class="form-control" name="pan_card" placeholder="Upload Pan Card">
+            </div>
+            <br>
+            <div>
+                <label for="voter_id_proof"><b>Upload VoterId Card</b></label>
+
+                <input type="file" class="form-control" name="voter_id_proof" placeholder="Upload VoterId Card">
+            </div>
+            <br>
+            <div>
+                <label for="marksheet"><b>Upload Marksheet</b></label>
+
+                <input type="file" class="form-control" name="marksheet" placeholder="Upload Marksheet">
+            </div>
+            <br>
+            <div>
+                <button class="btn btn-success">Upload</button>
+            </div>
+
+        </form>
+
+
+        <br>
+        <div>
+            <button class="btn btn-warning"><a href="/download/">Download Zip</a></button>
+        </div>
+
+
+
+    </div>
+
+    <div class="container">
+        <h2 class="alert alert-danger text-center">Your Documents:</h2>
+
+
+        <table class="table">
+            <thead>
+                <th>Profile_photo</th>
+                <th>Aadhar_card</th>
+                <th>Pan_card</th>
+                <th>VoterId</th>
+                <th>Marksheet</th>
+            </thead>
+            <tbody>
+                <tr>
+
+                    {% if user_profile.profile_photo %}
+                    <td><img style="width: 20%;" src="{{ user_profile.profile_photo.url }}" alt="Profile Photo"></td>
+                    {% else %}
+                    <td>
+                        <p>No Profile Photo uploaded</p>
+                    </td>
+                    {% endif %}
+
+                    {% if user_profile.aadhar_card %}
+                    <td> <img style="width: 20%;" src="{{ user_profile.aadhar_card.url }}" alt="Aadhar Card"></td>
+                    {% else %}
+                    <td>
+                        <p>No Aadhar Card uploaded</p>
+                    </td>
+                    {% endif %}
+
+                    {% if user_profile.pan_card %}
+                    <td> <img style="width: 20%;" src="{{ user_profile.pan_card.url }}" alt="Pan Card"></td>
+                    {% else %}
+                    <td>
+                        <p>No Pan Card uploaded</p>
+                    </td>
+                    {% endif %}
+
+                    {% if user_profile.voter_id_proof %}
+                    <td> <img style="width: 20%;" src="{{ user_profile.voter_id_proof.url }}" alt="Voter ID Proof"></td>
+                    {% else %}
+                    <td>
+                        <p>No Voter ID Proof uploaded</p>
+                    </td>
+                    {% endif %}
+
+                    {% if user_profile.marksheet %}
+                    <td> <img style="width: 20%;" src="{{ user_profile.marksheet.url }}" alt="Marksheet"></td>
+                    {% else %}
+                    <td>
+                        <p>No Marksheet uploaded</p>
+                    </td>
+                    {% endif %}
+
+
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
